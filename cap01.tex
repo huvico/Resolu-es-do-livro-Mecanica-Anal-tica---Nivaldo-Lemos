@@ -1,0 +1,167 @@
+\chapter{Capítulo 1: Dinâmica Lagrangiana}\label{cap1}
+\section{Equação paramétrica}
+    
+        Considerando cada equação separadamente, observa-se um número maior de variáveis do que de equações, impossibilitando a solução do problema.
+        
+    (i) Isolando o termo $zdz$ em cada equação, teremos a seguinte igualdade:
+        \begin{equation} \label{eq:ex1.1}
+            zdz = (x^2+y^2)\frac{dx}{x}=(x^2+y^2)\frac{dy}{y}
+        \end{equation}
+
+        e ainda:
+        \begin{align}
+            & \frac{dx}{x} = \frac{dy}{y} \label{eq:ex1.1dx} \\
+            & \int \frac{1}{x}dx = \int \frac{1}{y}dy \\
+            & \ln{\frac{x}{x_0}} = \ln{\frac{y}{y_0}} \implies \ln{\frac{x}{y}} = \ln{\frac{x_0}{y_0}} = \mathrm{constante} \label{eq:ex1.1relacao}\\
+            & d\left ( \ln{\frac{x}{y}} \right ) = 0
+        \end{align}
+
+(ii) Pela \eqref{eq:ex1.1dx}, teremos $dx=x dy/y$, e substituindo na equação do problema, dada por:
+    \begin{equation} \nonumber
+        x^2dx+y^2dx+xz dz = x^2dx+y^2x\frac{dy}{y}+xz dz = x \left (x dx+y dy+z dz \right ) = 0
+    \end{equation}
+    \begin{equation}
+        \frac{x}{2}\left ( dx^2+dy^2+dz^2 \right ) = \frac{x}{2} d\left ( x^2+y^2+z^2 \right ) = 0
+    \end{equation}
+
+Observa-se que o diferencial é nulo, o que implica a soma $x^2+y^2+z^2$ ser constante. Além disso, a \eqref{eq:ex1.1relacao} nos fornece a sequinte relação:
+\begin{equation}
+    \frac{x}{y}=e^\mathrm{C} \implies y=\mathrm{C_2}x
+\end{equation}
+    
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+\section{Conta deslizante na haste}
+    
+Observa-se que a conta desliza sem atrito pela haste e teremos a ação da gravidade na direção vertical. Sendo $r$ a distância percorrida na haste e $\theta$ o angulo entre a haste e o eixo $x$, teremos o vínculo $\theta=\omega t=\dot{\omega}t$, o que implica em apenas $2N-p=1$ coordenada generalizada.
+    
+Em coordenadas polares teremos $\Vec{V}=\dot{r}\cdot \hat{r} + \dot{\theta} r \cdot \hat{\theta}$, portanto:
+\begin{equation}\label{eq:ex1.2}
+    v^2=\dot{r}^2+\dot{\theta}^2r^2    
+\end{equation}
+
+Lembrando que a energia cinética é dada por:
+\begin{equation}\label{eq:energiaCinetica}
+    T = \frac{m v^2}{2}
+\end{equation}
+
+Substituindo \eqref{eq:ex1.2} em \eqref{eq:energiaCinetica}, teremos:
+\begin{equation} \nonumber
+    T = \frac{m}{2} \left ( \dot{r}^2+\omega^2r^2 \right )
+\end{equation}
+
+Sendo $\theta = \omega t$, a energia potencial será dada por $V=-mgr \sin{\omega t}$, resultando na Lagrangiana esperada:
+\begin{equation} \nonumber
+    L = \frac{m}{2} \left ( \dot{r}^2+\omega^2r^2 \right ) - mgr \sin{\omega t}
+\end{equation}
+
+Utilizando a coordenada generalizada $r$, pelas equações de Lagrange teremos
+\begin{equation} \label{eq:ex1.2_Lr}
+    \frac{d}{dt}\left ( \frac{\partial L}{\partial \dot{r}} \right )  - \frac{\partial L}{\partial r} = 0
+\end{equation}
+ Sendo:
+\begin{align}
+    & \frac{\partial L}{\partial r} = m\dot{\theta}^2r - mg \sin{\omega t} \label{eq:ex1.2a}\\
+    & \frac{\partial L}{\partial \dot{r}} = m \dot{r} \\
+    & \frac{d}{dt}\left ( \frac{\partial L}{\partial \dot{r}} \right ) =  m \Ddot{r} \label{eq:ex1.2b}
+\end{align}
+Teremos a equação do movimento substituindo as equações \eqref{eq:ex1.2a} e \eqref{eq:ex1.2b} na \eqref{eq:ex1.2_Lr}, dada por:
+\begin{equation}
+    m \Ddot{r} - m\dot{\theta}^2r + mg \sin{\omega t} = 0 \implies \Ddot{r} - \dot{\theta}^2r = -g \sin{\omega t} \label{eq:ex1.2_eq_movimento}
+\end{equation}
+
+A equação \eqref{eq:ex1.2_eq_movimento} é do tipo não homogênea, cuja solução é dada pela solução da equação homogênea somada da solução do caso particular dadas as condições inicias $r(0)=r_0 > 0$ e $\dot{r}(0)=0$.
+
+Para o caso homogêneo, $\Ddot{r} - \dot{\theta}^2r =0$, a solução geral é:
+\begin{align}
+    & r = Ae^{\omega t} +Be^{-\omega t} \\
+    & \dot{r} = A\omega e^{\omega t} -B\omega e^{-\omega t} \\
+    & \Ddot{r} = A\omega^2 e^{\omega t} +B\omega^2 e^{-\omega t} = \omega ^2 r \\
+\end{align}
+
+Pelas condições iniciais em $t=0$:
+\begin{align}
+    & r(0) = A+B=r_0 \\
+    & \dot{r}(0) = A\omega-B\omega=0 \implies A = B \\
+    & A = \frac{r_0}{2}
+\end{align}
+
+Para o caso particular:
+\begin{align}
+    & r = C\sin{\omega t} \\
+    & \dot{r} = C\omega \cos{\omega t} \\
+    & \Ddot{r} = -C\omega^2 \sin{\omega t}
+\end{align}
+Pelas condições iniciais, teremos:    
+\begin{equation}
+    -C\omega^2 \sin{\omega t}-\omega^2C\sin{\omega t}+ g \sin{\omega t}=0 \implies C=\frac{g}{2\omega^2}
+\end{equation}
+
+Logo, a solução da trajetória requerida será:
+
+\begin{equation}
+    r(t)=\frac{r_0}{2}\left (e^{\omega t}+e^{-\omega t} \right )+\frac{g}{2\omega^2}\sin{\omega t}
+\end{equation}
+
+        
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{O pêndulo esférico}
+
+O vetor velocidade em coordenadas esféricas é dado por $\dot{r}=\dot{r}\cdot \hat{r}+r\dot{\phi}\sin{\theta}\cdot \hat{\phi}+r\dot{\theta}\cdot \hat{\theta}$.
+
+Logo a energia cinética e a potencial serão dadas pelas \eqref{eq:ex1.3_ec} e \eqref{eq:ex1.3_ep}. Lembrando que $r$ é constante, portanto $\dot{r}=0$, caracterizando o vínculo. Dessa forma teremos $3-1=2$ coordenadas generalizadas, $\theta$ e $\phi$.
+\noindent
+\begin{equation}\label{eq:ex1.3_ec}
+    T=\frac{m}{2}(\dot{r}^2+r^2\dot{\phi}^2\sin{\theta}^2+r^2\dot{\theta}^2)
+\end{equation}
+
+\begin{equation}\label{eq:ex1.3_ep}
+    V = -mgr\cos{\theta}
+\end{equation}
+
+A Lagrangiana do problema será:
+\begin{equation}
+    L = \frac{m}{2}r^2(\dot{\phi}^2\sin{\theta}^2+\dot{\theta}^2)
+\end{equation}
+
+Observa-se que a coordenada $\phi$ é cíclica e para a coordenada $\theta$, a equação do movimento será:
+
+\begin{equation}
+    \dot{\theta}-\dot{\phi}^2\sin{\theta}\cos{\theta}+\frac{g}{r}\sin{\theta}
+\end{equation}
+
+
+
+
+
+    \begin{align}\nonumber
+    x = R(\theta -\sin{\theta}) & & y = R(1-\cos{\theta}) \\ \dot{x} = R(\dot{\theta}-\dot{\theta}\cos{\theta}) & & \dot{y} = R\dot{\theta}\sin{\theta} \\
+    \dot{x}^2 = R^2(\dot{\theta}^2-2\dot{\theta}\cos{\theta}+\dot{\theta}^2\cos{\theta}^2) & & \dot{y}=R\dot{\theta}^2\sin{\theta}^2
+\end{align}
+
+Logo a energia cinética será
+\noindent
+\begin{equation}\label{eq:ex1.4_Ec}
+    T=mR^2\dot{\theta}^2(1-\cos{\theta})
+\end{equation}. Como $1-\cos{\theta}=2\sin^2{\theta/2}$, podemos escrever a energia cinética como
+\begin{equation}
+    T=2mR^2\dot{\theta}^2\sin^2{\frac{\theta}{2}}
+\end{equation}
+
+Realizando a mudança de variável dada por
+
+\begin{align}
+    u=cos\frac{\theta}{2} && \mathrm{d}u=-\frac{1}{2}sin\frac{\theta}{2}\mathrm{d}\theta
+\end{align}
+\begin{equation} \label{eq:ex1.4_theta}
+    \dot{u}=-\frac{\dot{\theta}}{2}\sin{\frac{\theta}{2}} \implies \dot{\theta}=-\frac{2\dot{u}}{sen^2\frac{\theta}{2}}
+\end{equation}
+
+Substituindo \eqref{eq:ex1.4_theta} na \eqref{eq:ex1.4_Ec}:
+
+\begin{equation}
+    L=8mR^2\dot{u}^2+2mgR(1-\dot{u}^2)
+\end{equation}
